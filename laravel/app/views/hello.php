@@ -36,7 +36,7 @@
 <body>
 	<div class="welcome">
 		<a href="http://laravel.com" title="Laravel PHP Framework"><img style="width:250px;height:250px"src="http://img4.wikia.nocookie.net/__cb20131220003038/ninjago-fanon/images/3/36/Lucy_Ninja.png"></a>
-		<h1>The Ninja Game!!</h1>
+		<h1>Testing hot deploy</h1>
 	</div>
 </body>
 </html>
