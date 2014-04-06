@@ -59,10 +59,10 @@ return array(
 			'username'  => 'adminrknVeNK',
 			'password'  => 'nYnM5WEX2RzB',
 			
-			'host'      => 'localhost',
-			'database'  => 'laravel',
-			'username'  => 'root',
-			'password'  => '',
+			//'host'      => 'localhost',
+			//'database'  => 'laravel',
+			//'username'  => 'root',
+			//'password'  => '',
 			
 			
 			'charset'   => 'utf8',
