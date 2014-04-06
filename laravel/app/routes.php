@@ -15,3 +15,9 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+//Route::get('users','UserController@displayAllUsers');
+
+Route::get('users/', array('as' => 'users', 'uses' => 'UserController@showAllUsers'));
+Route::get('user/{id}',array('as'=>'user','uses'=>'UserController@viewUser'));

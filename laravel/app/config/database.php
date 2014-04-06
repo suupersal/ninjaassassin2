@@ -58,6 +58,13 @@ return array(
 			'database'  => 'laravel',
 			'username'  => 'adminrknVeNK',
 			'password'  => 'nYnM5WEX2RzB',
+			
+			'host'      => 'localhost',
+			'database'  => 'laravel',
+			'username'  => 'root',
+			'password'  => '',
+			
+			
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
