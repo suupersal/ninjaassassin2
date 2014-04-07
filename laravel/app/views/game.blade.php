@@ -14,6 +14,18 @@
     <!-- Bootstrap core CSS -->
   {{ HTML::style('css/bootstrap.min.css'); }}
   {{ HTML::style('css/cover.css'); }}   
+  {{ HTML::script('js/jquery.js'); }}
+
+
+
+
+
+  <!-- Game scripts go here-->
+    {{ HTML::script('game/scripts/resources.js'); }}
+     {{ HTML::script('game/scripts/menus.js'); }}
+      {{ HTML::script('game/scripts/ninjas.js'); }}
+       {{ HTML::script('game/scripts/Map.js'); }}
+        {{ HTML::script('game/scripts/constants.js'); }}
 
     <!-- Custom styles for this template -->
    
@@ -49,6 +61,16 @@
 
           <div class="inner cover">
             <h1 class="cover-heading">Ninja Assasin 2</h1>
+          
+
+
+
+ 
+
+ <canvas id="game"> <canvas id="game"><script type = "text/javascript" src="game/scripts/main.js"></script></canvas></canvas>
+
+
+
            <!-- game goes here-->
            Game Goes here
           </div>
@@ -66,7 +88,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-     {{ HTML::script('js/jquery.js'); }}
+    
     {{ HTML::script('js/bootstrap.min.js'); }}
     {{ HTML::script('js/holder.js'); }}
   </body>
