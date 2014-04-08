@@ -14,18 +14,23 @@
     <!-- Bootstrap core CSS -->
   {{ HTML::style('css/bootstrap.min.css'); }}
   {{ HTML::style('css/cover.css'); }}   
-  {{ HTML::script('js/jquery.js'); }}
+ 
 
 
 
 
 
   <!-- Game scripts go here-->
-    {{ HTML::script('game/scripts/resources.js'); }}
-     {{ HTML::script('game/scripts/menus.js'); }}
-      {{ HTML::script('game/scripts/ninjas.js'); }}
-       {{ HTML::script('game/scripts/Map.js'); }}
-        {{ HTML::script('game/scripts/constants.js'); }}
+    
+        <script src="scripts/jquery.js"></script>
+        <script src="scripts/resources.js"></script>
+        <script src="scripts/menus.js"></script>
+        <script src="scripts/ninjas.js"></script>
+        <script src="scripts/Map.js"></script>
+        <script src="scripts/constants.js"></script>
+        
+   
+   
 
     <!-- Custom styles for this template -->
    
@@ -67,8 +72,7 @@
 
  
 
- <canvas id="game"> <canvas id="game"><script type = "text/javascript" src="game/scripts/main.js"></script></canvas></canvas>
-
+  <canvas id="game"><script type = "text/javascript" src="scripts/main.js"></script></canvas>
 
 
            <!-- game goes here-->
@@ -90,6 +94,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     
     {{ HTML::script('js/bootstrap.min.js'); }}
-    {{ HTML::script('js/holder.js'); }}
+  
   </body>
 </html>
