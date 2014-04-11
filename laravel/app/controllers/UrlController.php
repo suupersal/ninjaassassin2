@@ -14,7 +14,7 @@ class UrlController extends \BaseController {
 		
 
 
-		return View::make('register.index');
+		return View::make('register.index')->with('title','Register');
 
 	}
 

@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Ninja Assasing</title>
+    <title>Ninja Assasin 2 </title>
 
     <!-- Bootstrap core CSS -->
   {{ HTML::style('css/bootstrap.min.css'); }}
@@ -52,9 +52,11 @@
           <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Ninja Assasin 2</h3>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Play</a></li>
-                
+              <ul class="nav masthead-nav"> 
+
+                <li> {{ HTML::link('https://github.com/jraguilo/NinjaAssassin/archive/master.zip', 'Download')}}</li>
+                <li>{{ HTML::linkRoute('home', 'Play') }}</li>
+               
 
                 @if(Auth::check())
    
@@ -67,7 +69,8 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Ninja Assasin 2</h1>
+             <h1 class="cover-heading"></h1>
+           
           
 
 

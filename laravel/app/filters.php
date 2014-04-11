@@ -22,6 +22,22 @@ App::after(function($request, $response)
 	//
 });
 
+
+
+
+
+Route::filter('role', function()
+{ if(Auth::check()){
+  if ( Auth::user()->admin !==1) {
+     // do something
+     return Redirect::route('home'); 
+   }
+}
+else{
+ return Redirect::route('home'); 
+}
+}); 
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

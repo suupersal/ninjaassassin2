@@ -47,30 +47,25 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+           
+ @if(Auth::check())
+   
+    <li>{{ HTML::linkRoute('logout', 'Logout (' . Auth::user()->username . ')') }}</li>
+@else
+    <li>{{ HTML::linkRoute('login', 'Login') }}</li>
+@endif
+
+
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
+       
         </div>
       </div>
     </div>
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+       
+        <div >
           <h1 class="page-header">Ninja Administration</h1>
 
           <div class="row placeholders">
@@ -105,7 +100,7 @@
                   <th>UserName</th>
                   <th>Created On</th>
                   <th>Score</th>
-                  <th>Last Login</th>
+                 
                 </tr>
               </thead>
               <tbody>

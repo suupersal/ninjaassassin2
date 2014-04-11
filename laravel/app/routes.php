@@ -18,8 +18,13 @@ Route::get('/',array('as'=>'home', function()
 
 //Route::get('users','UserController@displayAllUsers');
 
-Route::get('users/', array('as' => 'users', 'uses' => 'UserController@showAllUsers'));
-//Route::get('user/{id}',array('as'=>'user','uses'=>'UserController@viewUser'));
+
+Route::group(array('before' => 'role'), function() {
+        Route::get('users/', 'UserController@showAllUsers');
+      
+
+
+});
 
 
 // Route group for API versioning
