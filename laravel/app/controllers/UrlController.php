@@ -98,6 +98,13 @@ else{
 				));
 
 		}
+
+		else if ($id=='top')
+		{
+			$users = DB::table('users')
+                    ->orderBy('score', 'desc')
+
+		}
 		else{
 			Auth::logout();
 			return Response::json(array(

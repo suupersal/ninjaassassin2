@@ -1,5 +1,6 @@
-@extends('layouts.default')
-
+@extends('layouts.global')
+@section('scripts')
+@stop
 @section('content')
     <h1>Login</h1>
 
