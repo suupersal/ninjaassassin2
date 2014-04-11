@@ -54,8 +54,14 @@
               <h3 class="masthead-brand">Ninja Assasin 2</h3>
               <ul class="nav masthead-nav">
                 <li class="active"><a href="#">Play</a></li>
-                <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Login</a></li>
+                
+
+                @if(Auth::check())
+   
+    <li>{{ HTML::linkRoute('logout', 'Logout (' . Auth::user()->username . ')') }}</li>
+@else
+    <li>{{ HTML::linkRoute('login', 'Login') }}</li>
+@endif
               </ul>
             </div>
           </div>

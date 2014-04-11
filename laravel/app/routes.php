@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/',array('as'=>'home', function()
 {
 	return View::make('game');
-});
-
+}));
 
 //Route::get('users','UserController@displayAllUsers');
 
@@ -30,7 +29,44 @@ Route::group(array('prefix' => 'api/create/'), function()
 });
 
 // Route group for API versioning
-Route::group(array('prefix' => 'api/', 'before' => 'auth.basic'), function()
+Route::group(array('prefix' => 'api/'), function()
 {
     Route::resource('user', 'UrlController');
 });
+
+//
+Route::post('login', function () {
+        $user = array(
+            'username' => Input::get('username'),
+            'password' => Input::get('password')
+        );
+        
+        if (Auth::attempt($user)) {
+            return Redirect::route('home')
+                ->with('flash_notice', 'You are successfully logged in.');
+        }
+        
+        // authentication failure! lets go back to the login page
+        return Redirect::route('login')
+            ->with('flash_error', 'Your username/password combination was incorrect.')
+            ->withInput();
+});
+
+
+Route::get('logout',array('as'=>'logout', function () {
+        Auth::logout();
+        return Redirect::route('home');
+            
+}));
+
+Route::get('score',array('as'=>'score', function () {
+        if(Auth::check()){
+            return Auth::user()->score;
+        }
+        return -1;
+            
+}));
+
+Route::get('login', array('as' => 'login', function () {
+    return View::make('login')->with('title','Login');
+}))->before('guest');

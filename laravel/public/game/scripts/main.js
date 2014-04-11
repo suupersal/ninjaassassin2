@@ -30,6 +30,8 @@ function preloading()
 		// Let's play this game!
 		level = 1;
 		lives = 3;
+
+    
         score = 0;
         bullets = 3;
 		document.addEventListener("keyup",keyUpHandler, false);

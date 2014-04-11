@@ -66,13 +66,24 @@ class UrlController extends \BaseController {
 
 		if ($id=='score')
 		{
-			$score = Auth::user()->score;
-			Auth::logout();
-			return Response::json(array(
+			//return "Chesss";
+ 			if(Auth::check()){
+	             $score = Auth::user()->score;
+ 				return Response::json(array(
 				'error' => false,
 				'score'=>$score,
 				200
 				));
+ 			}
+else{
+
+	return Response::json(array(
+				'error' => true,
+				'message'=> 'not loged in',
+				'score'=> "NA",
+				200
+				));
+}
 
 		}
 
