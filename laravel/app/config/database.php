@@ -54,15 +54,15 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '127.9.228.130',
-			'database'  => 'laravel',
-			'username'  => 'adminrknVeNK',
-			'password'  => 'nYnM5WEX2RzB',
-			
-			//'host'      => 'localhost',
+			//'host'      => '127.9.228.130',
 			//'database'  => 'laravel',
-			//'username'  => 'root',
-			//'password'  => '',
+			//'username'  => 'adminrknVeNK',
+			//'password'  => 'nYnM5WEX2RzB',
+			
+			'host'      => 'localhost',
+			'database'  => 'laravel',
+			'username'  => 'root',
+			'password'  => '',
 			
 			
 			'charset'   => 'utf8',

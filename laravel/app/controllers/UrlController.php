@@ -11,14 +11,10 @@ class UrlController extends \BaseController {
 	public function index()
 	{
 			// Make sure current user owns the requested resource
-		$score = Auth::user()->score;
+		
 
-
-		return Response::json(array(
-			'error' => false,
-			'score' => $score,
-			200
-			));
+       Auth::logout();
+		return "You are in the index method";
 
 	}
 
@@ -71,6 +67,7 @@ class UrlController extends \BaseController {
 		if ($id=='score')
 		{
 			$score = Auth::user()->score;
+			Auth::logout();
 			return Response::json(array(
 				'error' => false,
 				'score'=>$score,
@@ -82,6 +79,7 @@ class UrlController extends \BaseController {
 		else if ($id=='email')
 		{
 			$email = Auth::user()->email;
+			Auth::logout();
 			return Response::json(array(
 				'error' => false,
 				'email'=>$email,
@@ -90,6 +88,7 @@ class UrlController extends \BaseController {
 
 		}
 		else{
+			Auth::logout();
 			return Response::json(array(
 				'error' => true,
 				'score'=> "no such method",
