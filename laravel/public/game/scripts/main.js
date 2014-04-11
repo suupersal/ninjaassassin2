@@ -12,6 +12,7 @@ var score;
 var username;
 var audio;
 var audioPaused;
+var scoresReceived = false;
 
 //Create the canvas
 var canvas = document.getElementById("game");
@@ -30,8 +31,6 @@ function preloading()
 		// Let's play this game!
 		level = 1;
 		lives = 3;
-
-    
         score = 0;
         bullets = 3;
 		document.addEventListener("keyup",keyUpHandler, false);
@@ -40,7 +39,7 @@ function preloading()
         audioPaused = false;
         audio.addEventListener("ended", playAudio, false);
 		//start game loop
-        gameloop = setInterval(update, TIME_PER_FRAME);	
+        gameloop = setInterval(update, TIME_PER_FRAME);
 	}
 }
 
@@ -559,8 +558,10 @@ function attack() {
         //TODO submit score
         //send variable score
         //check if online
-        if(navigator.onLine)
+        if(navigator.onLine) {
             sendScore(username,score);
+            scoresReceived = false;
+        }
     } 
     else {
         gamePhase = "LostLife";
@@ -568,7 +569,19 @@ function attack() {
 }
 
 function sendScore(username,score){
+    //var data = "username=" + username + "&score=" + score;
+    var data = "score=" + score;
+    var request = $.ajax({
+                    url: "http://laravel-ninjaassasin.rhcloud.com/api/user/score",
+                    type: "put",
+                    data: data
+                });
+    request.done(function (response, textStatus, jqXHR){
+        // log a message to the console
+        console.log(response);
+    });
     
+    return 55555;
 }
 
 function grabItem(itemName) {

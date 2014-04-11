@@ -75,14 +75,25 @@
  
 
 <div>
+   
+
+
     <canvas id="game"> {{ HTML::script('game/scripts/main.js'); }}
+    </script>
     </canvas>        <div style="position:absolute" id="mobile"></div>
-         </div>
+        
          <audio id="audio">
     <source src="assets/espionage.ogg" type="audio/ogg">
     <source src="assets/espionage.mp3" type="audio/mpeg">
     <source src="assets/espionage.wav" type="audio/wav">
     </audio>
+
+
+
+
+
+
+
 
 
 

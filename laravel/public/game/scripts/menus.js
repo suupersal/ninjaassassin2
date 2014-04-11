@@ -1,7 +1,9 @@
-var user1="user1", score1=300, 
-    user2="usertwo", score2=200, 
-    user3="userthree", score3=100;
-
+var user1="Loading..", score1="Loading..", 
+    user2="Loading..", score2="Loading..", 
+    user3="Loading..", score3="Loading..";
+    user4="Loading..", score4="Loading..", 
+    user5="Loading..", score5="Loading..";
+var text ="";
 // Menu functions
 
 // Game Over menu displays when the player has lost all lives
@@ -28,21 +30,59 @@ function renderStart() {
     ctx.drawImage(bgImage, 0,0);
     ctx.font = "bold 24px sans-serif";
     ctx.textAlign = 'center';
-	ctx.fillText("High Scores:", 225,150);
-	//get user and name
-	//user1=
-	ctx.fillText("1. " + user1 + " - " + score1, 225,175);
-	ctx.fillText("2. " + user2 + " - " + score2, 225, 200);
-	ctx.fillText("3. " + user3 + " - " + score3, 225,225);
-	ctx.fillText("Press R to Start Game", 225,250);
+    ctx.fillText("High Scores:", 225,150);
+    //get user and name
+    if (scoresReceived == false) {
+        getScores();
+        scoresReceived = true;
+    }
+    ctx.fillText("1. " + user1 + " - " + score1, 225,175);
+    ctx.fillText("2. " + user2 + " - " + score2, 225, 200);
+    ctx.fillText("3. " + user3 + " - " + score3, 225,225);
+    ctx.fillText("4. " + user4 + " - " + score4, 225, 250);
+    ctx.fillText("5. " + user5 + " - " + score5, 225,275);
+    ctx.fillText("Press R to Start Game", 225, 300);
+    
+    //var error, message;
+    //ctx.fillText("error: "+error,225,300);
+    //ctx.fillText("message: "+message,225,320);
+}
+
+function getScores() {
+    
+    var request = $.ajax({
+                    //url: "/sinisterrecette/ninjaassassin/workspace/jsontest.txt", //test
+                    url: "./api/user/top",
+                    type: "get"
+                });
+    request.done(function (response, textStatus, jqXHR){
+        // log a message to the console
+        console.log(response);
+        
+        var data = response;
+        user1 = data.user1;
+        user2 = data.user2;
+        user3 = data.user3;
+        user4 = data.user4;
+        user5 = data.user5;
+        score1 = data.score1;
+        score2 = data.score2;
+        score3 = data.score3;
+        score4 = data.score4;
+        score5 = data.score5;
+        //error = data.error;
+        //message = data.message;
+    });
+    
+    return 55555;
 }
 
 function renderComplete() {
     ctx.drawImage(bgImage, 0,0);
     ctx.font = "bold 24px sans-serif";
     ctx.textAlign = 'center';
-	ctx.fillText("You have found the intel!", 225,175);
-	ctx.fillText("Press R to continue.", 225, 200);
+    ctx.fillText("You have found the intel!", 225,175);
+    ctx.fillText("Press R to continue.", 225, 200);
 
 }
 
@@ -50,15 +90,15 @@ function renderLost() {
     ctx.drawImage(bgImage, 0,0);
     ctx.font = "bold 24px sans-serif";
     ctx.textAlign = 'center';
-	ctx.fillText("You have been killed!", 225,175);
-	ctx.fillText("Press R to continue.", 225, 200);
+    ctx.fillText("You have been killed!", 225,175);
+    ctx.fillText("Press R to continue.", 225, 200);
 }
 
 function renderGameOver() {
     ctx.drawImage(bgImage, 0,0);
     ctx.font = "bold 24px sans-serif";
     ctx.textAlign = 'center';
-	ctx.fillText("Game Over!", 225,175);
-	ctx.fillText("Your Score:" + score, 225,200)
-	ctx.fillText("Press R to start a new game.", 225, 225);
+    ctx.fillText("Game Over!", 225,175);
+    ctx.fillText("Your Score:" + score, 225,200)
+    ctx.fillText("Press R to start a new game.", 225, 225);
 }

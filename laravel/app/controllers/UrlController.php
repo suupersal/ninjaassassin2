@@ -13,8 +13,8 @@ class UrlController extends \BaseController {
 			// Make sure current user owns the requested resource
 		
 
-       Auth::logout();
-		return "You are in the index method";
+
+		return View::make('register.index');
 
 	}
 
@@ -38,18 +38,17 @@ class UrlController extends \BaseController {
 	 */
 	public function store()
 	{
+
+
+
 		$user = new User;
 		$user->username=Request::get('username');
 		$user->email=Request::get('email');
 		$user->password=Hash::make(Request::get('password'));
 		//create a user
 		$user->save();
-
-		return Response::json(array(
-			'error' => false,
-			'message' => "User added successfully",
-			200
-			));
+		Auth::login($user);
+		return Redirect::route('home');
 
 
 
@@ -67,30 +66,30 @@ class UrlController extends \BaseController {
 		if ($id=='score')
 		{
 			//return "Chesss";
- 			if(Auth::check()){
-	             $score = Auth::user()->score;
- 				return Response::json(array(
-				'error' => false,
-				'score'=>$score,
-				200
-				));
- 			}
-else{
+			if(Auth::check()){
+				$score = Auth::user()->score;
+				return Response::json(array(
+					'error' => false,
+					'score'=>$score,
+					200
+					));
+			}
+			else{
 
-	return Response::json(array(
-				'error' => true,
-				'message'=> 'not loged in',
-				'score'=> "NA",
-				200
-				));
-}
+				return Response::json(array(
+					'error' => true,
+					'message'=> 'not loged in',
+					'score'=> "NA",
+					200
+					));
+			}
 
 		}
 
 		else if ($id=='email')
 		{
 			$email = Auth::user()->email;
-			Auth::logout();
+			
 			return Response::json(array(
 				'error' => false,
 				'email'=>$email,
@@ -99,14 +98,34 @@ else{
 
 		}
 
-	//	else if ($id=='top')
-		//{
-		//	$users = DB::table('users')
-              //      ->orderBy('score', 'desc');
+		else if ($id=='top')
+		{
+			$users = DB::table('users')
+			->orderBy('score', 'desc')->get();
 
-		//}
+			return Response::json(array(
+				'error' => false,
+				'user1'=>$users[0]->username,
+				'score1'=> $users[0]->score,
+
+				'user2'=>$users[1]->username,
+				'score2'=> $users[1]->score,
+
+				'user3'=>$users[2]->username,
+				'score3'=> $users[2]->score,
+
+				'user4'=>$users[3]->username,
+				'score4'=> $users[3]->score,
+
+			    'user5'=>$users[4]->username,
+				'score5'=> $users[4]->score,
+
+				200
+				));
+
+		}
 		else{
-			Auth::logout();
+			
 			return Response::json(array(
 				'error' => true,
 				'score'=> "no such method",
@@ -137,40 +156,40 @@ else{
 
 		if($id=='score'){
 			
-        if($Auth::check())
-		{
-			$user = Auth::user();
-			$user->score=Request::get('score');
-			$user->update();
-		
+			if($Auth::check())
+			{
+				$user = Auth::user();
+				$user->score=Request::get('score');
+				$user->update();
 
-		return Response::json(array(
-			'error' => false,
-			'message' => "successfully updated user score",
-			200
-			));
 
-	}
-	else{
-return Response::json(array(
-			'error' => true,
-			'message' => "Not loged in",
-			200
-			));
+				return Response::json(array(
+					'error' => false,
+					'message' => "successfully updated user score",
+					200
+					));
 
-	}
+			}
+			else{
+				return Response::json(array(
+					'error' => true,
+					'message' => "Not loged in",
+					200
+					));
+
+			}
 		}
-else if($id=='email'){
+		else if($id=='email'){
 			$user = Auth::user();
 			$user->email=Request::get('email');
 			$user->update();
-		
 
-		return Response::json(array(
-			'error' => false,
-			'message' => "successfully updated user email",
-			200
-			));
+
+			return Response::json(array(
+				'error' => false,
+				'message' => "successfully updated user email",
+				200
+				));
 		}
 		
 	}

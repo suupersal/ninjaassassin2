@@ -19,11 +19,11 @@ Route::get('/',array('as'=>'home', function()
 //Route::get('users','UserController@displayAllUsers');
 
 Route::get('users/', array('as' => 'users', 'uses' => 'UserController@showAllUsers'));
-Route::get('user/{id}',array('as'=>'user','uses'=>'UserController@viewUser'));
+//Route::get('user/{id}',array('as'=>'user','uses'=>'UserController@viewUser'));
 
 
 // Route group for API versioning
-Route::group(array('prefix' => 'api/'), function()
+Route::group(array('prefix' => 'api'), function()
 {
     Route::resource('user', 'UrlController');
 });
@@ -58,3 +58,9 @@ Route::get('logout',array('as'=>'logout', function () {
 Route::get('login', array('as' => 'login', function () {
     return View::make('login')->with('title','Login');
 }))->before('guest');
+
+Route::get('register',array('as'=>'register', function () {
+      
+        return Redirect::to('api/user');
+            
+}));
