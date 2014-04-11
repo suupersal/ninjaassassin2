@@ -45,9 +45,9 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Ninja Assasin 2</h3>
+              <h3 class="masthead-brand">Ninja Assassin 2</h3>
               <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Play</a></li>
+                <li>{{ HTML::linkRoute('home', 'Play') }}</li>
                 
 
                 @if(Auth::check())
@@ -61,7 +61,7 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Ninja Assasin 2</h1>
+            <h1 class="cover-heading">Ninja Assassin 2</h1>
           
 
 

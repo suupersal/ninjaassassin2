@@ -26,5 +26,7 @@
     <!-- submit button -->
     <p>{{ Form::submit('Login') }}</p>
 
+
     {{ Form::close() }}
+    {{ HTML::linkRoute('register', 'Register') }}
 @stop
