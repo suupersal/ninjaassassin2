@@ -99,12 +99,12 @@ else{
 
 		}
 
-		else if ($id=='top')
-		{
-			$users = DB::table('users')
-                    ->orderBy('score', 'desc')
+	//	else if ($id=='top')
+		//{
+		//	$users = DB::table('users')
+              //      ->orderBy('score', 'desc');
 
-		}
+		//}
 		else{
 			Auth::logout();
 			return Response::json(array(
@@ -136,6 +136,9 @@ else{
 	{
 
 		if($id=='score'){
+			
+        if($Auth::check())
+		{
 			$user = Auth::user();
 			$user->score=Request::get('score');
 			$user->update();
@@ -146,6 +149,16 @@ else{
 			'message' => "successfully updated user score",
 			200
 			));
+
+	}
+	else{
+return Response::json(array(
+			'error' => true,
+			'message' => "Not loged in",
+			200
+			));
+
+	}
 		}
 else if($id=='email'){
 			$user = Auth::user();

@@ -22,12 +22,6 @@ Route::get('users/', array('as' => 'users', 'uses' => 'UserController@showAllUse
 Route::get('user/{id}',array('as'=>'user','uses'=>'UserController@viewUser'));
 
 
-
-Route::group(array('prefix' => 'api/create/'), function()
-{
-    Route::resource('user', 'UrlController');
-});
-
 // Route group for API versioning
 Route::group(array('prefix' => 'api/'), function()
 {
@@ -59,13 +53,7 @@ Route::get('logout',array('as'=>'logout', function () {
             
 }));
 
-Route::get('score',array('as'=>'score', function () {
-        if(Auth::check()){
-            return Auth::user()->score;
-        }
-        return -1;
-            
-}));
+
 
 Route::get('login', array('as' => 'login', function () {
     return View::make('login')->with('title','Login');
