@@ -7,8 +7,8 @@
 	<td>{{ $user->id }}</td>
 	<td>{{ $user->username }}</td>
 	<td>{{ $user->created_at }}</td>
-	<td>SCORE</td>
-	<td>LAST_LOGIN</td>
+	<td>{{ $user->score }}</td>
+	
 </tr>
 
 @endforeach

@@ -21,6 +21,7 @@
 
 
   <!-- Game scripts go here-->
+    {{ HTML::script('game/scripts/jquery.touchSwipe.min.js'); }}
     {{ HTML::script('game/scripts/resources.js'); }}
      {{ HTML::script('game/scripts/menus.js'); }}
       {{ HTML::script('game/scripts/ninjas.js'); }}
@@ -67,12 +68,20 @@
 
  
 
- <canvas id="game"> <canvas id="game"><script type = "text/javascript" src="game/scripts/main.js"></script></canvas></canvas>
+<div>
+    <canvas id="game"> {{ HTML::script('game/scripts/main.js'); }}
+    </canvas>        <div style="position:absolute" id="mobile"></div>
+         </div>
+         <audio id="audio">
+    <source src="assets/espionage.ogg" type="audio/ogg">
+    <source src="assets/espionage.mp3" type="audio/mpeg">
+    <source src="assets/espionage.wav" type="audio/wav">
+    </audio>
 
 
 
            <!-- game goes here-->
-           Game Goes here
+         
           </div>
 
           <div class="mastfoot">
