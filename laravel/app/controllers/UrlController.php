@@ -153,19 +153,34 @@ class UrlController extends \BaseController {
 	 */
 	public function update($id)
 	{
-
+		
 		if($id=='score'){
+
 			
-			if($Auth::check())
+			if(Auth::check())
 			{
 				$user = Auth::user();
+				//
+
+
+
+				$newScore=Request::get('score');
+				$oldScore=$user->score;
+				$newInt=intval($newScore);
+				$oldInt=intval($oldScore);
+				if($newInt>$oldInt){
 				$user->score=Request::get('score');
 				$user->update();
+				}
+
+
 
 
 				return Response::json(array(
 					'error' => false,
 					'message' => "successfully updated user score",
+					'old'=>$oldInt,
+					'new'=>$newInt,
 					200
 					));
 
@@ -179,18 +194,13 @@ class UrlController extends \BaseController {
 
 			}
 		}
-		else if($id=='email'){
-			$user = Auth::user();
-			$user->email=Request::get('email');
-			$user->update();
-
-
-			return Response::json(array(
-				'error' => false,
-				'message' => "successfully updated user email",
+		
+		return Response::json(array(
+				'error' => true,
+				'message' => "fucntion not found",
+				'idvar' => $id,
 				200
 				));
-		}
 		
 	}
 
