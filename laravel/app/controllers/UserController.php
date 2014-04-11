@@ -1,9 +1,17 @@
 <?php 
 class UserController extends BaseController{
 	//public $restful = true;
+	
+
+// Edit this:
+
+
 	public function index(){
 		
 		return View::make('users.index');
+		//return Response::Auth::user()->toJson();
+
+	
 		
 	}
 	

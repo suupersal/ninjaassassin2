@@ -21,3 +21,16 @@ Route::get('/', function()
 
 Route::get('users/', array('as' => 'users', 'uses' => 'UserController@showAllUsers'));
 Route::get('user/{id}',array('as'=>'user','uses'=>'UserController@viewUser'));
+
+
+
+Route::group(array('prefix' => 'api/create/'), function()
+{
+    Route::resource('user', 'UrlController');
+});
+
+// Route group for API versioning
+Route::group(array('prefix' => 'api/', 'before' => 'auth.basic'), function()
+{
+    Route::resource('user', 'UrlController');
+});
